@@ -1,5 +1,5 @@
 import pygame
-
+#I am now doing player
 class Player:
 	def __init__(image, speed=[0,0], pos=[0,0])
 		player1.__init__(self, "Art/Player1Art.png", [0,0], pos)
