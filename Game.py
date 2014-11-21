@@ -46,22 +46,22 @@ while True:
 
 	if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_w
-				player1.go("up")
+				player2.go("up")
 			if event.key == pygame.K_d 
-				player1.go("right")
+				player2.go("right")
 			if event.key == pygame.K_s 
-				player1.go("down")
+				player2.go("down")
 			if event.key == pygame.K_a 
-				player1.go("left")
+				player2.go("left")
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_w 
-				player1.go("stop up")
+				player2.go("stop up")
 			if event.key == pygame.K_d
-				player1.go("stop right")
+				player2.go("stop right")
 			if event.key == pygame.K_s 
-				player1.go("stop down")
+				player2.go("stop down")
 			if event.key == pygame.K_a 
-				player1.go("stop left")
+				player2.go("stop left")
 		
 	
 
