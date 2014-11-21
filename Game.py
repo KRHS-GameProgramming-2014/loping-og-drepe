@@ -1,4 +1,4 @@
-import pygame, sys,
+import pygame, sys
 from Player import *
 from Object import *
 from Powerup import *
@@ -17,6 +17,9 @@ screen = pygame.display.set_mode(size)
 
 player1 = Player()
 player2 = Player()
+
+
+
 
 
 
@@ -47,7 +50,7 @@ while True:
 	if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_w
 				player2.go("up")
-			if event.key == pygame.K_d 
+			if event.key == pygame.K_d
 				player2.go("right")
 			if event.key == pygame.K_s 
 				player2.go("down")
