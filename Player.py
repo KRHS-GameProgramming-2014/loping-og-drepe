@@ -1,8 +1,8 @@
 import pygame
 class Player:
-	def __init__(image, speed=[0,0], pos=[0,0]):
-		player1.__init__(self, "Art/Player1Art.png", [0,0], pos)
-		player2.__init__(self, "Art/Player2Art.png", [0,0], pos)
+	def __init__(pnum):
+		if pnum == 1:
+			self.images = []
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
 		self.maxSpeed = 10
@@ -14,6 +14,13 @@ class Player:
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
 		self.maxSpeed = 20
+		
+		
+	def update(self, image, speed, pos):
+		Player.update(self, image, speed, pos)
+		self.animate()
+		self.facingChanged = False
+	
 
 	def go(self, direction):
 		if direction == "up":
