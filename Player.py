@@ -45,6 +45,8 @@ class Player:
 
 	def move(self):
 		self.rect = self.rect.move(self.speed)
+	
+	def health(self):
 		
 	def collideWall(self, width, height):
 		if not self.didBounceX:
@@ -57,10 +59,14 @@ class Player:
 				self.didBounceY = True
 	
 	def collidePlayer(self, other):
-		
+		if self != other:
+			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.health = self.health-1
 				
 	
-	def collideArrow(self, other)
+	def collideArrow(self, other):
 				
 				
 	
