@@ -1,7 +1,8 @@
 import pygame
 class Player:
-	def __init__(pnum):
-		if pnum == 1:
+	def __init__(playernum):
+		self.playernumber = playernum
+		if playernum == 1:
 			self.images = []
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
@@ -45,8 +46,6 @@ class Player:
 
 	def move(self):
 		self.rect = self.rect.move(self.speed)
-	
-	def health(self):
 		
 	def collideWall(self, width, height):
 		if not self.didBounceX:
