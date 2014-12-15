@@ -11,7 +11,7 @@ width = 100
 height = 800
 size = width, height
 
-bgColor = r,g,b = 0, 0, 0
+bgColor = pygame.image.load("BL1.png")
 
 screen = pygame.display.set_mode(size)
 
@@ -48,32 +48,29 @@ while True:
 
 
 	if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_w
+			if event.key == pygame.K_w:
 				player2.go("up")
-			if event.key == pygame.K_d
+			if event.key == pygame.K_d:
 				player2.go("right")
-			if event.key == pygame.K_s 
+			if event.key == pygame.K_s:
 				player2.go("down")
-			if event.key == pygame.K_a 
+			if event.key == pygame.K_a:
 				player2.go("left")
-		if event.type == pygame.KEYUP:
-			if event.key == pygame.K_w 
+	if event.type == pygame.KEYUP:
+			if event.key == pygame.K_w:
 				player2.go("stop up")
-			if event.key == pygame.K_d
+			if event.key == pygame.K_d:
 				player2.go("stop right")
-			if event.key == pygame.K_s 
+			if event.key == pygame.K_s:
 				player2.go("stop down")
-			if event.key == pygame.K_a 
+			if event.key == pygame.K_a:
 				player2.go("stop left")
 		
 	
 
 
 	
-	bgColor = r,g,b
+	bgColor = pygame.image.load("BL1.png")
 	screen.fill(bgColor)
-	for ball in balls:
-		screen.blit(ball.image, ball.rect)
-	screen.blit(player.image, player.rect)
 	pygame.display.flip()
 	clock.tick(60)
