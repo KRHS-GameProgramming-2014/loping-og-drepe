@@ -1,6 +1,6 @@
 import pygame
-class Player:
-	def __init__(playernum):
+class Player():
+	def __init__(self, playernum):
 		self.playernumber = playernum
 		if playernum == 1:
 			self.images = []
@@ -63,12 +63,4 @@ class Player:
 				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
 					if (self.radius + other.radius) > self.distance(other.rect.center):
 						self.health = self.health-1
-				
-	
-	def collideArrow(self, other):
-				
-				
-	
-
-
-
+		
