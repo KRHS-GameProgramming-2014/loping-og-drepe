@@ -1,21 +1,19 @@
 import pygame
 class Player():
-	def __init__(self, playernum):
+	def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
 		self.playernumber = playernum
 		if playernum == 1:
 			self.images = []
-		self.image = self.images[self.frame]
+		self.image = pygame.image.load(image)
 		self.rect = self.image.get_rect(center = self.rect.center)
+		self.speedx = speed[0]
+		self.speedy = speed[1]
+		self.speed = [self.speedx, self.speedy]
 		self.maxSpeed = 10
 		self.changed = False
-		self.frame = 0
-		self.maxFrame = len(self.images) - 1
 		self.waitCount = 0
 		self.maxWait = 60*.25
-		self.image = self.images[self.frame]
-		self.rect = self.image.get_rect(center = self.rect.center)
-		self.maxSpeed = 20
-		
+		self.living = True
 
 	def go(self, direction):
 		if direction == "up":
