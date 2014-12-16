@@ -12,7 +12,7 @@ def place(self, pos):
 		self.rect.center = pos
 
 def collidePlayer(self, other)
-
+	if self.rect 
 def distance (self, other)
 	x1 = self.rect.center[0]
 	y1 = self.rect.center[1]
