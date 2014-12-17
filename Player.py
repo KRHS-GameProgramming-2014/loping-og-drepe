@@ -1,11 +1,12 @@
 import pygame
 class Player():
-	def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
+	def __init__(self, playernum, image, speed = [0,0], pos = [100,100]):
 		self.playernumber = playernum
 		if playernum == 1:
 			self.images = []
 		self.image = pygame.image.load(image)
-		self.rect = self.image.get_rect(center = self.rect.center)
+		self.rect = self.image.get_rect()
+		self.place(pos)
 		self.speedx = speed[0]
 		self.speedy = speed[1]
 		self.speed = [self.speedx, self.speedy]
@@ -14,7 +15,10 @@ class Player():
 		self.waitCount = 0
 		self.maxWait = 60*.25
 		self.living = True
-
+	
+	def place(self, pos):
+		self.rect.center = pos
+	
 	def go(self, direction):
 		if direction == "up":
 			self.facing = "up"

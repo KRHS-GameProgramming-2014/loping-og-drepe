@@ -6,15 +6,16 @@ pygame.init()
 
 clock = pygame.time.Clock
 
-width = 100
-height = 800
+width = 1000
+height = 715
 size = width, height
 
 
 
 screen = pygame.display.set_mode(size)
-
+player = []
 player1 = [Player(1, "ball.png")]
+player1 += [Player(1, "ball.png")]
 
 
 while True:
@@ -64,7 +65,7 @@ while True:
 
 
 	
-	bgColor = pygame.image.load("BL1.png")
+	
 
 pygame.init()
 
@@ -126,9 +127,7 @@ while True:
 		
 	
 
-
-	
-	bgColor = pygame.image.load("BL1.png")
+	bgColor = r,g,b
 	screen.fill(bgColor)
 	pygame.display.flip()
 	clock.tick(60)
