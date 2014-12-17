@@ -15,7 +15,10 @@ class Player():
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
 		self.maxSpeed = 20
-		
+		self.normalMaxSpeed = 20
+		self.fasterMaxSpeed = 30
+		self.maxSPUtime = 10*60
+		self.spuTime = 0
 
 	def go(self, direction):
 		if direction == "up":
@@ -44,6 +47,22 @@ class Player():
 		elif direction == "stop left":
 			self.speedx = 0
 
+	def update(self, width, height):
+		#timers
+		if self.spuTime != 0:
+			if self.spuTime < self.maxSPUtime:
+				self.spuTimer += 1
+			else:
+				self.spuTime = 0
+				self.maxSpeed = self.normalMaxSpeed
+		
+		
+		self.didBounceX = False
+		self.didBounceY = False
+		self.speed = [self.speedx, self.speedy]
+		self.move()
+		self.collideWall(width, height)
+
 	def move(self):
 		self.rect = self.rect.move(self.speed)
 		
@@ -64,3 +83,11 @@ class Player():
 					if (self.radius + other.radius) > self.distance(other.rect.center):
 						self.health = self.health-1
 		
+	def collidePowerUp(self, pu):
+		if self.rect.right > pu.rect.left and self.rect.left < pu.rect.right:
+			if self.rect.bottom > pu.rect.top and self.rect.top < pu.rect.bottom:
+				if (self.radius + pu.radius) > self.distance(pu.rect.center):
+					if pu.kind == "SPU":
+						self.maxSpeed = self.fasterMaxSpeed
+						self.spuTimer = 1
+						
