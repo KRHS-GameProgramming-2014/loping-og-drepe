@@ -48,7 +48,7 @@ while True:
 		pygame.display.flip()
 		
 		
-	bgImage = pygame.image.load("images/Screens/Main Screen.png").convert()
+	bgImage = pygame.image.load("BL1.png").convert()
 	bgRect = bgImage.get_rect()
 	while run:
 		for event in pygame.event.get():
