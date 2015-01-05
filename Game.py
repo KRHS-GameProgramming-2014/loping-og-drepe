@@ -46,7 +46,7 @@ while True:
 		screen.blit(bgImage, bgRect)
 		screen.blit(startButton.image, startButton.rect)
 		pygame.display.flip()
-		clock.tick(60)
+		
 		
 	bgImage = pygame.image.load("images/Screens/Main Screen.png").convert()
 	bgRect = bgImage.get_rect()
