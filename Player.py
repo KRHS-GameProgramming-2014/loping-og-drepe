@@ -16,16 +16,41 @@ class Player():
 		self.maxFrame = len(self.images) - 1
 		self.waitCount = 0
 		self.maxWait = 60*.25
-		self.maxSpeed = 20
-		self.normalMaxSpeed = 20
-		self.fasterMaxSpeed = 30
+		#self.maxSpeed = 20
+		#self.normalMaxSpeed = 20
+		#self.fasterMaxSpeed = 30
 		self.maxSPUtime = 10*60
 		self.spuTime = 0
+		self.facing = "up"
 
 	def place(self, pos):
 		self.rect.center = pos
 		
+	def animate(self):
+		if self.waitCount < self.maxWait:
+			self.waitCount += 1
+		else:
+			self.waitCount = 0
+			self.changed = True
+			if self.frame < self.maxFrame:
+				self.frame += 1
+			else:
+				self.frame = 0
+		
+		if self.changed:	
+			if self.facing == "up":
+				self.images = self.upImages
+			elif self.facing == "down":
+				self.images = self.downImages
+			elif self.facing == "right":
+				self.images = self.rightImages
+			elif self.facing == "left":
+				self.images = self.leftImages
+			
+			self.image = self.images[self.frame]
+		
 	def go(self, direction):
+		print "[DEBUG] direction in go() is : " + direction
 		if direction == "up":
 			self.facing = "up"
 			self.changed = True
@@ -53,7 +78,6 @@ class Player():
 			self.speedx = 0
 
 	def update(self, width, height):
-		#timers
 		if self.spuTime != 0:
 			if self.spuTime < self.maxSPUtime:
 				self.spuTimer += 1
@@ -61,12 +85,11 @@ class Player():
 				self.spuTime = 0
 				self.maxSpeed = self.normalMaxSpeed
 		
-		
-		self.didBounceX = False
-		self.didBounceY = False
 		self.speed = [self.speedx, self.speedy]
 		self.move()
-		self.collideWall(width, height)
+		#self.collideWall(width, height)
+		#self.animate()
+		self.changed = False
 
 	def move(self):
 		self.rect = self.rect.move(self.speed)

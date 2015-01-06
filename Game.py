@@ -18,9 +18,8 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("BL1.png").convert()
 bgRect = bgImage.get_rect()
 
-players = []
-player1 = [Player(1, "ball.png",[0,0], [100,100])]
-player1 + [Player(1, "ball.png",[0,0], [100,100])]
+player1 = Player(1, "P1.png",[0,0], [400,200])
+player2 = Player(1, "P2.png",[0,0], [750,600])
 
 run = False
 
@@ -55,13 +54,38 @@ while True:
 			if event.type == pygame.QUIT: sys.exit()
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_w:
+					print "[DEBUG] w button pressed"
 					player1.go("up")
+					player1.update(width, height)
 				if event.key == pygame.K_d:
+					print "[DEBUG] d button pressed"
 					player1.go("right")
+					player1.update(width, height)
 				if event.key == pygame.K_s:
+					print "[DEBUG] s button pressed"
 					player1.go("down")
+					player1.update(width, height)
 				if event.key == pygame.K_a:
+					print "[DEBUG] a button pressed"
 					player1.go("left")
+					player1.update(width, height)
+				if event.key == pygame.K_UP:
+					print "[DEBUG] up arrow pressed"
+					player2.go("up")
+					player2.update(width, height)
+				if event.key == pygame.K_RIGHT:
+					print "[DEBUG] right arrow pressed"
+					player2.go("right")
+					player2.update(width, height)
+				if event.key == pygame.K_DOWN:
+					print "[DEBUG] down arrow pressed"
+					player2.go("down")
+					player2.update(width, height)
+				if event.key == pygame.K_LEFT:
+					print "[DEBUG] left arrow pressed"
+					player2.go("left")
+					player2.update(width, height)				
+			
 			if event.type == pygame.KEYUP:
 				if event.key == pygame.K_w:
 					player1.go("stop up")
@@ -71,32 +95,19 @@ while True:
 					player1.go("stop down")
 				if event.key == pygame.K_a:
 					player1.go("stop left")
-					
-while run:
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT: sys.exit()
-			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_UP:
-					player.go("up")
+					player2.go("stop up")
 				if event.key == pygame.K_RIGHT:
-					player.go("right")
+					player2.go("stop right")
 				if event.key == pygame.K_DOWN:
-					player.go("down")
+					player2.go("stop down")
 				if event.key == pygame.K_LEFT:
-					player.go("left")
-			if event.type == pygame.KEYUP:
-				if event.key == pygame.K_UP:
-					player.go("stop up")
-				if event.key == pygame.K_RIGHT:
-					player.go("stop right")
-				if event.key == pygame.K_DOWN:
-					player.go("stop down")
-				if event.key == pygame.K_LEFT:
-					player.go("stop left")
-	
+					player2.go("stop left")
+										
 		bgColor = r,g,b
 		screen.fill(bgColor)
 		screen.blit(bgImage, bgRect)
-		screen.blit(player.image, player.rect)
+		screen.blit(player1.image, player1.rect)
+		screen.blit(player2.image, player2.rect)
 		pygame.display.flip()
-		clock.tick(60)
+		
