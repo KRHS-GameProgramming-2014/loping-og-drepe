@@ -5,7 +5,7 @@ class Player():
 		if playernum == 1:
 			self.images = []
 		self.image = pygame.image.load(image)
-		self.image = pygame.transform.scale(image, [100,100])
+		self.image = pygame.transform.scale(self.image, [100,100])
 		self.frame = 0
 		self.rect = self.image.get_rect()
 		self.place(pos)
@@ -119,4 +119,4 @@ class Player():
 					if pu.kind == "SPU":
 						self.maxSpeed = self.fasterMaxSpeed
 						self.spuTimer = 1
-						
+                        
