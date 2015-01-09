@@ -21,6 +21,7 @@ bgRect = bgImage.get_rect()
 
 player1 = Player(1, "P1.png",[0,0], [400,200])
 player2 = Player(1, "P2.png",[0,0], [750,600])
+powerups = [Powerup(1, "SPU",[500,600])]
 
 run = False
 
@@ -104,11 +105,16 @@ while True:
 					player2.go("stop down")
 				if event.key == pygame.K_LEFT:
 					player2.go("stop left")
+		
+		for powerup in powerups:
+			powerup.update()
 										
 		bgColor = r,g,b
 		screen.fill(bgColor)
 		screen.blit(bgImage, bgRect)
 		screen.blit(player1.image, player1.rect)
 		screen.blit(player2.image, player2.rect)
+		for powerup in powerups:
+			screen.blit(powerup.image, powerup.rect)
 		pygame.display.flip()
 		

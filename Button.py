@@ -34,11 +34,10 @@ class Button():
 		if self.clicked and self.collidePoint(pt):
 			return True
 		else:
-			self.clicked = True
+			self.clicked = False
 			self.image = self.baseImage
-			return True
+			return False
 	
 	def update(self, width, height):
 		pass
-
 
