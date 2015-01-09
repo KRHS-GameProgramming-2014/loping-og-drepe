@@ -1,7 +1,7 @@
 import pygame
 
-class Powerup:
-	def __intit__(self, kind, pos = [0,0]):
+class Powerup():
+	def __init__(self, kind, pos = [0,0]):
 		self.kind = kind
 		if self.kind == "SPU":
 			self.image = pygame.image.load("Art/SPDPower.png")

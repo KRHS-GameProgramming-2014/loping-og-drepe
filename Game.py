@@ -1,7 +1,7 @@
 import pygame, sys
 from Player import Player
 from Button import Button
-
+from Powerup import Powerup
 
 pygame.init()
 
@@ -21,7 +21,7 @@ bgRect = bgImage.get_rect()
 
 player1 = Player(1, "P1.png",[0,0], [400,200])
 player2 = Player(1, "P2.png",[0,0], [750,600])
-powerups = [Powerup(1, "SPU",[500,600])]
+powerups = [Powerup("SPU",[500,600])]
 
 run = False
 
