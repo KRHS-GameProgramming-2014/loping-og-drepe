@@ -55,35 +55,35 @@ while True:
 			if event.type == pygame.QUIT: sys.exit()
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_w:
-					print "[DEBUG] w button pressed"
+					#print "[DEBUG] w button pressed"
 					player1.go("up")
 					player1.update(width, height)
 				if event.key == pygame.K_d:
-					print "[DEBUG] d button pressed"
+					#print "[DEBUG] d button pressed"
 					player1.go("right")
 					player1.update(width, height)
 				if event.key == pygame.K_s:
-					print "[DEBUG] s button pressed"
+					#print "[DEBUG] s button pressed"
 					player1.go("down")
 					player1.update(width, height)
 				if event.key == pygame.K_a:
-					print "[DEBUG] a button pressed"
+					#print "[DEBUG] a button pressed"
 					player1.go("left")
 					player1.update(width, height)
 				if event.key == pygame.K_UP:
-					print "[DEBUG] up arrow pressed"
+					#print "[DEBUG] up arrow pressed"
 					player2.go("up")
 					player2.update(width, height)
 				if event.key == pygame.K_RIGHT:
-					print "[DEBUG] right arrow pressed"
+					#print "[DEBUG] right arrow pressed"
 					player2.go("right")
 					player2.update(width, height)
 				if event.key == pygame.K_DOWN:
-					print "[DEBUG] down arrow pressed"
+					#print "[DEBUG] down arrow pressed"
 					player2.go("down")
 					player2.update(width, height)
 				if event.key == pygame.K_LEFT:
-					print "[DEBUG] left arrow pressed"
+					#print "[DEBUG] left arrow pressed"
 					player2.go("left")
 					player2.update(width, height)				
 			
