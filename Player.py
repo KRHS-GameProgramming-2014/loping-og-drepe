@@ -51,7 +51,7 @@ class Player():
 			self.image = self.images[self.frame]
 		
 	def go(self, direction):
-		print "[DEBUG] direction in go() is : " + direction
+		#print "[DEBUG] direction in go() is : " + direction
 		if direction == "up":
 			self.facing = "up"
 			self.changed = True
