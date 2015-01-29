@@ -1,4 +1,6 @@
 import pygame
+from Bullet import Bullet
+
 class Player():
     def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
         self.playernumber = playernum
@@ -23,6 +25,8 @@ class Player():
         self.maxSPUtime = 10*60
         self.spuTime = 0
         self.facing = "up"
+        self.coolDown = 0
+        self.coolDownMax = 5
 
     def place(self, pos):
         self.rect.center = pos
@@ -85,7 +89,11 @@ class Player():
             else:
                 self.spuTime = 0
                 self.maxSpeed = self.normalMaxSpeed
-        
+        if self.coolDown > 0:
+            if self.coolDown < self.coolDownMax:
+                self.coolDown += 1
+            else:
+                self.coolDown = 0
         self.speed = [self.speedx, self.speedy]
         self.move()
         #self.collideWall(width, height)
@@ -119,4 +127,10 @@ class Player():
                     if pu.kind == "SPU":
                         self.maxSpeed = self.fasterMaxSpeed
                         self.spuTimer = 1
-                        
+      
+    def shoot(self):
+        if self.coolDown == 0:
+            self.coolDown += 1
+            return [Bullet(self.rect.center, 10, self.facing)]
+        else:
+            return []                  
