@@ -33,6 +33,6 @@ class Powerup():
 		y1 = self.rect.center[1]
 		x2 = pt[0]
 		y2 = pt[1]
-			
+		
 
 
