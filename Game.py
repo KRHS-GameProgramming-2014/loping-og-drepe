@@ -24,6 +24,8 @@ player1 = Player(1, "P1.png",[0,0], [400,200])
 player2 = Player(1, "P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
+p1Bullets = []
+
 run = False
 
 startButton = Button([width/2, height-300], 
@@ -54,7 +56,8 @@ while True:
         pygame.display.flip()
         
         
-
+    bgImage = pygame.image.load("BL1.png").convert()
+    bgRect = bgImage.get_rect()
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -71,6 +74,9 @@ while True:
                 if event.key == pygame.K_a:
                     #print "[DEBUG] a button pressed"
                     player1.go("left")
+                if event.key == pygame.K_LSHIFT:
+                    #print "[DEBUG] a button pressed"
+                    p1Bullets += player1.shoot()
                 if event.key == pygame.K_UP:
                     #print "[DEBUG] up arrow pressed"
                     player2.go("up")
@@ -102,13 +108,14 @@ while True:
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
         
-        player1.update(width, height)
-        player2.update(width, height)
-        
         for powerup in powerups:
             powerup.update()
-        bgImage = pygame.image.load("BL1.png").convert()
-        bgImage = pygame.transform.scale(bgImage, [1000,715])
+        for bullet in p1Bullets:
+            bullet.update(width, height)
+        player1.update(width, height)
+        player2.update(width, height)
+
+
         bgColor = r,g,b
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
@@ -116,5 +123,7 @@ while True:
         screen.blit(player2.image, player2.rect)
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)
+        for bullet in p1Bullets:
+            screen.blit(bullet.image, bullet.rect)
         pygame.display.flip()
         
