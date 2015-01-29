@@ -1,9 +1,9 @@
 import pygame
 
-class Powerup:
-	def __intit__(self, kind, pos[0,0])
+class Powerup():
+	def __init__(self, kind, pos = [0,0]):
 		self.kind = kind
-		if self.kind == "SPU"
+		if self.kind == "SPU":
 			self.image = pygame.image.load("Art/SPDPower.png")
 		self.rect = self.image.get_rect()
 		self.place(pos)
@@ -16,7 +16,7 @@ class Powerup:
 	def place(self, pos):
 		self.rect.center = pos
 
-	def collidePlayer(self, other)
+	def collidePlayer(self, other):
 		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
 			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
 				if (self.radius + other.radius) > self.distance(other.rect.center):
@@ -28,7 +28,7 @@ class Powerup:
 		else:
 			self.living = False
 	
-	def distance (self, other)
+	def distance (self, other):
 		x1 = self.rect.center[0]
 		y1 = self.rect.center[1]
 		x2 = pt[0]
