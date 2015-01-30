@@ -25,6 +25,7 @@ player2 = Player(1, "P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
+p2Bullets = []
 
 run = False
 
@@ -88,7 +89,10 @@ while True:
                     player2.go("down")
                 if event.key == pygame.K_LEFT:
                     #print "[DEBUG] left arrow pressed"
-                    player2.go("left")               
+                    player2.go("left")         
+                if event.key == pygame.K_LSHIFT:
+                    #print "[DEBUG] a button pressed"
+                    p2Bullets += player2.shoot()
             
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
@@ -112,6 +116,8 @@ while True:
             powerup.update()
         for bullet in p1Bullets:
             bullet.update(width, height)
+        for bullet in p2Bullets:
+            bullet.update(width, height)
         player1.update(width, height)
         player2.update(width, height)
 
@@ -124,6 +130,8 @@ while True:
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)
         for bullet in p1Bullets:
+            screen.blit(bullet.image, bullet.rect)
+        for bullet in p2Bullets:
             screen.blit(bullet.image, bullet.rect)
         pygame.display.flip()
         
