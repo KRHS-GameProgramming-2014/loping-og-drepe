@@ -90,7 +90,7 @@ while True:
                 if event.key == pygame.K_LEFT:
                     #print "[DEBUG] left arrow pressed"
                     player2.go("left")         
-                if event.key == pygame.K_LSHIFT:
+                if event.key == pygame.K_KP0:
                     #print "[DEBUG] a button pressed"
                     p2Bullets += player2.shoot()
             
