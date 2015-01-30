@@ -14,7 +14,7 @@ class Player():
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 10
+        self.maxSpeed = 1
         self.changed = False
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0

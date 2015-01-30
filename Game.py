@@ -1,8 +1,9 @@
-
 import pygame, sys
 from Player import Player
 from Button import Button
 from Powerup import Powerup
+from HUD import Text
+from HUD import Score
 
 pygame.init()
 
@@ -26,6 +27,12 @@ powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
 p2Bullets = []
+
+timer = Score([80, height - 25], "Time: ", 36)
+timerWait = 0
+timerWaitMax = 6
+
+score = Score([width-80, height-25], "Score: ", 36)
 
 run = False
 
@@ -116,17 +123,26 @@ while True:
             powerup.update()
         for bullet in p1Bullets:
             bullet.update(width, height)
-        for bullet in p2Bullets:
-            bullet.update(width, height)
+            
+        if timerWait < timerWaitMax:
+            timerWait += 1
+        else:
+            timerWait = 0
+            timer.increaseScore(.1)
+        timer.update()
+        score.update()
         player1.update(width, height)
         player2.update(width, height)
-
+        
+ 
 
         bgColor = r,g,b
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
         screen.blit(player1.image, player1.rect)
         screen.blit(player2.image, player2.rect)
+        screen.blit(timer.image, timer.rect)
+        screen.blit(score.image, score.rect)
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)
         for bullet in p1Bullets:
