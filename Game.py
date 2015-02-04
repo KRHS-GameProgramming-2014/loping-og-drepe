@@ -123,7 +123,8 @@ while True:
             powerup.update()
         for bullet in p1Bullets:
             bullet.update(width, height)
-            
+        for bullet in p2Bullets:
+            bullet.update(width, height)
         if timerWait < timerWaitMax:
             timerWait += 1
         else:
