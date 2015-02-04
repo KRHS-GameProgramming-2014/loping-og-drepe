@@ -1,4 +1,4 @@
-import pygame
+import pygame, math
 from Bullet import Bullet
 
 class Player():
@@ -27,6 +27,7 @@ class Player():
         self.facing = "up"
         self.coolDown = 0
         self.coolDownMax = 5
+        self.living = True
 
     def place(self, pos):
         self.rect.center = pos
@@ -96,9 +97,12 @@ class Player():
                 self.coolDown = 0
         self.speed = [self.speedx, self.speedy]
         self.move()
+        self.collidePlayer(self)
         #self.collideWall(width, height)
         #self.animate()
         self.changed = False
+        self.health
+    
 
     def move(self):
         self.rect = self.rect.move(self.speed)
@@ -118,7 +122,16 @@ class Player():
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.health = self.health-1
+                        self.living = False
+                        return True
+        return False
+        
+    def distance(self, pt):
+		x1 = self.rect.center[0]
+		y1 = self.rect.center[1]
+		x2 = pt[0]
+		y2 = pt[1]
+		return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
     def collidePowerUp(self, pu):
         if self.rect.right > pu.rect.left and self.rect.left < pu.rect.right:
@@ -134,3 +147,8 @@ class Player():
             return [Bullet(self.rect.center, 2, self.facing)]
         else:
             return []                  
+
+    def health(self):
+        health = 3
+        if self.health < 1:
+            self.living = False
