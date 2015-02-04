@@ -82,7 +82,7 @@ while True:
                 if event.key == pygame.K_a:
                     #print "[DEBUG] a button pressed"
                     player1.go("left")
-                if event.key == pygame.K_LSHIFT:
+                if event.key == pygame.K_z:
                     #print "[DEBUG] a button pressed"
                     p1Bullets += player1.shoot()
                 if event.key == pygame.K_UP:
