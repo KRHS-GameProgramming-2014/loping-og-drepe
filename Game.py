@@ -64,52 +64,52 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     #print "[DEBUG] w button pressed"
-                    player1.go("up")
+                    player2.go("up")
                 if event.key == pygame.K_d:
                     #print "[DEBUG] d button pressed"
-                    player1.go("right")
+                    player2.go("right")
                 if event.key == pygame.K_s:
                     #print "[DEBUG] s button pressed"
-                    player1.go("down")
+                    player2.go("down")
                 if event.key == pygame.K_a:
                     #print "[DEBUG] a button pressed"
-                    player1.go("left")
-                if event.key == pygame.K_LSHIFT:
-                    #print "[DEBUG] a button pressed"
-                    p1Bullets += player1.shoot()
-                if event.key == pygame.K_UP:
-                    #print "[DEBUG] up arrow pressed"
-                    player2.go("up")
-                if event.key == pygame.K_RIGHT:
-                    #print "[DEBUG] right arrow pressed"
-                    player2.go("right")
-                if event.key == pygame.K_DOWN:
-                    #print "[DEBUG] down arrow pressed"
-                    player2.go("down")
-                if event.key == pygame.K_LEFT:
-                    #print "[DEBUG] left arrow pressed"
-                    player2.go("left")         
-                if event.key == pygame.K_KP0:
+                    player2.go("left")
+                if event.key == pygame.K_z:
                     #print "[DEBUG] a button pressed"
                     p2Bullets += player2.shoot()
+                if event.key == pygame.K_UP:
+                    #print "[DEBUG] up arrow pressed"
+                    player1.go("up")
+                if event.key == pygame.K_RIGHT:
+                    #print "[DEBUG] right arrow pressed"
+                    player1.go("right")
+                if event.key == pygame.K_DOWN:
+                    #print "[DEBUG] down arrow pressed"
+                    player1.go("down")
+                if event.key == pygame.K_LEFT:
+                    #print "[DEBUG] left arrow pressed"
+                    player1.go("left")         
+                if event.key == pygame.K_KP0:
+                    #print "[DEBUG] a button pressed"
+                    p1Bullets += player1.shoot()
             
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
-                    player1.go("stop up")
-                if event.key == pygame.K_d:
-                    player1.go("stop right")
-                if event.key == pygame.K_s:
-                    player1.go("stop down")
-                if event.key == pygame.K_a:
-                    player1.go("stop left")
-                if event.key == pygame.K_UP:
                     player2.go("stop up")
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_d:
                     player2.go("stop right")
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_s:
                     player2.go("stop down")
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_a:
                     player2.go("stop left")
+                if event.key == pygame.K_UP:
+                    player1.go("stop up")
+                if event.key == pygame.K_RIGHT:
+                    player1.go("stop right")
+                if event.key == pygame.K_DOWN:
+                    player1.go("stop down")
+                if event.key == pygame.K_LEFT:
+                    player1.go("stop left")
         
         for powerup in powerups:
             powerup.update()
