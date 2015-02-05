@@ -58,7 +58,7 @@ class Player():
             self.image = self.images[self.frame]
         
     def go(self, direction):
-        print "[DEBUG] direction in go() is : " + direction
+      #  print "[DEBUG] direction in go() is : " + direction
         if direction == "up":
             self.facing = "up"
             self.changed = True
@@ -89,7 +89,6 @@ class Player():
         if self.spuTime != 0:
             if self.spuTime < self.maxSPUtime:
                 self.spuTimer += 1
-            else:
                 self.spuTime = 0
                 self.maxSpeed = self.normalMaxSpeed
         if self.coolDown > 0:
@@ -99,8 +98,7 @@ class Player():
                 self.coolDown = 0
         self.speed = [self.speedx, self.speedy]
         self.move()
-        self.collidePlayer(self)
-        #self.collideWall(width, height)
+        self.collideWall(width, height)
         #self.animate()
         self.changed = False
         self.health
@@ -124,9 +122,14 @@ class Player():
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
-                        return True
-        return False
+                        if not self.didBounceX:
+                            self.speedx = -self.speedx
+                            self.didBouncex = True
+                        if not self.didBounceY:
+                            self.speedy = -self.speedy
+                            self.didBounceY = True
+                            
+
         
     def distance(self, pt):
         x1 = self.rect.center[0]

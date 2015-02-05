@@ -121,7 +121,11 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
- 
+        if not player1.living:
+            player1.remove()
+
+        if not player2.living:
+            player2.remove()
 
         bgColor = r,g,b
         screen.fill(bgColor)
