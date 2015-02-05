@@ -7,7 +7,7 @@ class Player():
         if playernum == 1:
             self.images = []
         self.image = pygame.image.load(image)
-        self.image = pygame.transform.scale(self.image, [100,100])
+        self.image = pygame.transform.scale(self.image, [50,50])
         self.frame = 0
         self.rect = self.image.get_rect()
         self.place(pos)
@@ -24,6 +24,8 @@ class Player():
         #self.fasterMaxSpeed = 30
         self.maxSPUtime = 10*60
         self.spuTime = 0
+        self.didBounceX = False
+        self.didBounceY = False
         self.facing = "up"
         self.coolDown = 0
         self.coolDownMax = 5
@@ -127,11 +129,11 @@ class Player():
         return False
         
     def distance(self, pt):
-		x1 = self.rect.center[0]
-		y1 = self.rect.center[1]
-		x2 = pt[0]
-		y2 = pt[1]
-		return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        x1 = self.rect.center[0]
+        y1 = self.rect.center[1]
+        x2 = pt[0]
+        y2 = pt[1]
+        return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
     def collidePowerUp(self, pu):
         if self.rect.right > pu.rect.left and self.rect.left < pu.rect.right:
