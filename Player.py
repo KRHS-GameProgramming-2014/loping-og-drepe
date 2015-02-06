@@ -86,6 +86,8 @@ class Player():
             self.speedx = 0
 
     def update(self, width, height):
+        self.didBounceX = False
+        self.didBounceY = False
         if self.spuTime != 0:
             if self.spuTime < self.maxSPUtime:
                 self.spuTimer += 1
@@ -101,7 +103,7 @@ class Player():
         self.collideWall(width, height)
         #self.animate()
         self.changed = False
-        self.health
+       # self.health
     
 
     def move(self):
@@ -153,7 +155,7 @@ class Player():
         else:
             return []                  
 
-    def health(self):
-        health = 3
-        if self.health < 1:
-            self.living = False
+   # def health(self):
+    #    health = 3
+     #   if self.health < 1:
+      #      self.living = False
