@@ -31,6 +31,15 @@ run = False
 startButton = Button([width/2, height-100], 
                      "Start_Base.png", 
                      "Start_Clicked.png")
+                     
+def collideplayer1(player1, player2):
+    if self != other:
+        if player1.rect.right > player2.rect.left and player1.rect.left < player2.rect.right:
+            if player1.rect.bottom > player2.rect.top and player1.rect.top < player2.rect.bottom:
+                if (player1.radius + player2.radius) > player1.distance(player2.rect.center):
+                    player1.living = False
+                    return True
+    return False
 
 while True:
     while not run:
@@ -121,11 +130,11 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
-        if not player1.living:
-            player1.remove()
-
-        if not player2.living:
-            player2.remove()
+    if not player1.living:
+        pygame.image.load("Ball.png")
+#
+ #       if not player2.living:
+  #          Player.remove()
 
         bgColor = r,g,b
         screen.fill(bgColor)
