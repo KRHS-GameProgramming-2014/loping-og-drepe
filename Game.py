@@ -1,5 +1,6 @@
 import pygame, sys
 from Player import Player
+from Player2 import Player2
 from Button import Button
 from Powerup import Powerup
 
@@ -20,7 +21,7 @@ bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
 player1 = Player(1, "P1.png",[0,0], [400,200])
-player2 = Player(1, "P2.png",[0,0], [750,600])
+player2 = Player2(1, "P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
