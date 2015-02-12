@@ -50,8 +50,6 @@ while True:
         bgImage = pygame.image.load("Art/Title.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
-        bgColor = r,g,b
-        screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
