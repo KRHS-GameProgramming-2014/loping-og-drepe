@@ -1,5 +1,6 @@
 import pygame, sys
 from Player import Player
+from Player2 import Player2
 from Button import Button
 from Powerup import Powerup
 
@@ -20,7 +21,7 @@ bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
 player1 = Player(1, "P1.png",[0,0], [400,200])
-player2 = Player(1, "P2.png",[0,0], [750,600])
+player2 = Player2(1, "P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
@@ -31,7 +32,7 @@ run = False
 startButton = Button([width/2, height-100], 
                      "Start_Base.png", 
                      "Start_Clicked.png")
-
+                     
 while True:
     while not run:
         for event in pygame.event.get():
@@ -49,8 +50,6 @@ while True:
         bgImage = pygame.image.load("Art/Title.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
-        bgColor = r,g,b
-        screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
@@ -121,11 +120,11 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
-        if not player1.living:
-            player1.remove()
-
-        if not player2.living:
-            player2.remove()
+    if not player1.living:
+        pygame.image.load("Ball.png")
+#
+ #       if not player2.living:
+  #          Player.remove()
 
         bgColor = r,g,b
         screen.fill(bgColor)

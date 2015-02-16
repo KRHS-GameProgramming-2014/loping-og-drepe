@@ -1,7 +1,7 @@
 import pygame, math
 from Bullet import Bullet
 
-class Player():
+class Player2():
     def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
         self.playernumber = playernum
         if playernum == 1:
@@ -146,3 +146,4 @@ class Player():
     #    health = 3
      #   if self.health < 1:
       #      self.living = False
+
