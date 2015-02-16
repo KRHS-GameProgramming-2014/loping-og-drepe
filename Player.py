@@ -118,19 +118,6 @@ class Player():
             if self.rect.top < 0 or self.rect.bottom > height:
                 self.speedy = 0
                 self.didBounceY = True
-    
-    def collidePlayer(self, other):
-        if self != other:
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        if not self.didBounceX:
-                            self.speedx = -self.speedx
-                            self.didBouncex = True
-                        if not self.didBounceY:
-                            self.speedy = -self.speedy
-                            self.didBounceY = True
-                            
 
         
     def distance(self, pt):
