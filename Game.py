@@ -54,7 +54,6 @@ while True:
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
         
-        
     bgImage = pygame.image.load("BL1.png").convert()
     bgRect = bgImage.get_rect()
     while run:
@@ -120,11 +119,11 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
-    if not player1.living:
-        pygame.image.load("Ball.png")
-#
- #       if not player2.living:
-  #          Player.remove()
+        if not player1.living:
+            pygame.image.load("Ball.png")
+
+        #if not player2.living:
+        #    Player.remove()
 
         bgColor = r,g,b
         screen.fill(bgColor)
