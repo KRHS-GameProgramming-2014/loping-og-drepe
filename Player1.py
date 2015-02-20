@@ -19,10 +19,10 @@ class Player1():
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
         self.maxWait = 60*.25
-        #self.maxSpeed = 20
-        #self.normalMaxSpeed = 20
+        self.maxSpeed = 20
+        self.normalMaxSpeed = 20
         #self.fasterMaxSpeed = 30
-        self.maxSPUtime = 10*60
+        #self.maxSPUtime = 10*60
         self.spuTime = 0
         self.didBounceX = False
         self.didBounceY = False
@@ -103,7 +103,7 @@ class Player1():
         self.collideWall(width, height)
         #self.animate()
         self.changed = False
-       # self.health
+        self.health
     
 
     def move(self):
@@ -144,7 +144,7 @@ class Player1():
         else:
             return []                  
 
-   # def health(self):
-    #    health = 3
-     #   if self.health < 1:
-      #      self.living = False
+    def health(self):
+        health = 3
+        if self.health < 1:
+            self.living = False
