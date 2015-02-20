@@ -39,12 +39,13 @@ class Bullet():
 
     def collideWall(self, width, height):
         if not self.didBounceX:
-            #print "trying to hit Wall"
             if self.rect.left < 0 or self.rect.right > width:
-                self.living = False
+                self.speedx = 0
+                self.didBounceX = True
         if not self.didBounceY:
             if self.rect.top < 0 or self.rect.bottom > height:
-                self.living = False
+                self.speedy = 0
+                self.didBounceY = True
                 
     def distance(self, pt):
         x1 = self.rect.center[0]
