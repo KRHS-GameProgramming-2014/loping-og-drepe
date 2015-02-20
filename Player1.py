@@ -118,7 +118,6 @@ class Player1():
             if self.rect.top < 0 or self.rect.bottom > height:
                 self.speedy = 0
                 self.didBounceY = True
-
         
     def distance(self, pt):
         x1 = self.rect.center[0]

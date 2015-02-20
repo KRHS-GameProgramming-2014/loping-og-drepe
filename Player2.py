@@ -103,7 +103,7 @@ class Player2():
         self.collideWall(width, height)
         #self.animate()
         self.changed = False
-       # self.health
+        self.health
     
 
     def move(self):
@@ -135,8 +135,8 @@ class Player2():
         else:
             return []                  
 
-   # def health(self):
-    #    health = 3
-     #   if self.health < 1:
-      #      self.living = False
+    def health(self):
+        health = 3
+        if self.health < 1:
+            self.living = False
 

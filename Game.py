@@ -117,7 +117,14 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
-
+        
+        for bullet in p2Bullets:
+            if not bullet.living:
+                p2Bullets.remove(bullet)
+        for bullet in p1Bullets:
+            if not bullet.living:
+                p1Bullets.remove(bullet)
+        print len(p1Bullets), len(p2Bullets)
         bgColor = r,g,b
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
