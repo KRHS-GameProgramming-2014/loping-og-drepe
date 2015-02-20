@@ -127,13 +127,6 @@ class Player2():
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
-    def collidePowerUp(self, pu):
-        if self.rect.right > pu.rect.left and self.rect.left < pu.rect.right:
-            if self.rect.bottom > pu.rect.top and self.rect.top < pu.rect.bottom:
-                if (self.radius + pu.radius) > self.distance(pu.rect.center):
-                    if pu.kind == "SPU":
-                        self.maxSpeed = self.fasterMaxSpeed
-                        self.spuTimer = 1
       
     def shoot(self):
         if self.coolDown == 0:
