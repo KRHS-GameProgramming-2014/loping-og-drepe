@@ -1,10 +1,9 @@
 import pygame, sys
-from Player import Player
+from Player1 import Player1
 from Player2 import Player2
 from Button import Button
 from Powerup import Powerup
 
-#Noah
 pygame.init()
 
 
@@ -20,7 +19,7 @@ bgImage = pygame.image.load("BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
-player1 = Player(1, "P1.png",[0,0], [400,200])
+player1 = Player1(1, "P1.png",[0,0], [400,200])
 player2 = Player2(1, "P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
@@ -118,12 +117,6 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
-        
-        if not player1.living:
-            pygame.image.load("Ball.png")
-
-        #if not player2.living:
-        #    Player.remove()
 
         bgColor = r,g,b
         screen.fill(bgColor)

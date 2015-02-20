@@ -134,6 +134,16 @@ class Player2():
                     if pu.kind == "SPU":
                         self.maxSpeed = self.fasterMaxSpeed
                         self.spuTimer = 1
+                        
+                        
+	def collidePlayer1(self, other):
+		if self != other:
+			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.living = False
+						return True
+		return False
       
     def shoot(self):
         if self.coolDown == 0:
