@@ -19,10 +19,10 @@ class Player1():
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
         self.maxWait = 60*.25
-        self.maxSpeed = 20
-        self.normalMaxSpeed = 20
+        #self.maxSpeed = 20
+        #self.normalMaxSpeed = 20
         #self.fasterMaxSpeed = 30
-        #self.maxSPUtime = 10*60
+        self.maxSPUtime = 10*60
         self.spuTime = 0
         self.didBounceX = False
         self.didBounceY = False
