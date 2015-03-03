@@ -1,6 +1,5 @@
 import pygame, sys
-from Player1 import Player1
-from Player2 import Player2
+from Player import Player
 from Button import Button
 from Powerup import Powerup
 
@@ -15,13 +14,13 @@ bgColor = r,g,b = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("BL1.png").convert()
+bgImage = pygame.image.load("Art/Background/BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
-player1 = Player1(1, "P1.png",[0,0], [400,200])
-player2 = Player2(1, "P2.png",[0,0], [750,600])
-powerups = [Powerup("SPU",[500,600])]
+player1 = Player(1, "Art/Player/P1.png",[0,0], [400,200])
+player2 = Player(1, "Art/Player/P2.png",[0,0], [750,600])
+powerups = [Powerup("Art/Powerups/SPU",[500,600])]
 
 p1Bullets = []
 p2Bullets = []
@@ -29,8 +28,8 @@ p2Bullets = []
 run = False
 
 startButton = Button([width/2, height-100], 
-                     "Start_Base.png", 
-                     "Start_Clicked.png")
+                     "Art/ButtonStart_Base.png", 
+                     "Art/Button/Start_Clicked.png")
                      
 while True:
     while not run:

@@ -4,7 +4,7 @@ class Powerup():
     def __init__(self, kind, pos = [0,0]):
         self.kind = kind
         if self.kind == "SPU":
-            self.image = pygame.image.load("Art/SPDPower.png")
+            self.image = pygame.image.load("Art/Powerups/SPDPower.png")
         self.rect = self.image.get_rect()
         self.place(pos)
         self.living = True
