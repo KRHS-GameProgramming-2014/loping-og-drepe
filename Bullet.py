@@ -34,7 +34,13 @@ class Bullet():
         
     def move(self):
         self.rect = self.rect.move(self.speed)
-
+    
+    def collidePlayer(self, other):
+        if self != other:
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        self.living = False
     
 
     def collideWall(self, width, height):
@@ -42,7 +48,7 @@ class Bullet():
             self.living = False
         if self.rect.top < 0 or self.rect.bottom > height:
             self.living = False
-                
+            
     def distance(self, pt):
         x1 = self.rect.center[0]
         y1 = self.rect.center[1]

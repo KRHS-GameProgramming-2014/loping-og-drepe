@@ -7,7 +7,7 @@ class Player1():
         if playernum == 1:
             self.images = []
         self.image = pygame.image.load(image)
-        self.image = pygame.transform.scale(self.image, [50,50])
+        self.image = pygame.transform.scale(self.image, [35,35])
         self.frame = 0
         self.rect = self.image.get_rect()
         self.place(pos)
