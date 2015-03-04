@@ -20,7 +20,7 @@ bgRect = bgImage.get_rect()
 
 player1 = Player(1, "Art/Player/P1.png",[0,0], [400,200])
 player2 = Player(1, "Art/Player/P2.png",[0,0], [750,600])
-powerups = [Powerup("Art/Powerups/SPU",[500,600])]
+powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
 p2Bullets = []
@@ -28,7 +28,7 @@ p2Bullets = []
 run = False
 
 startButton = Button([width/2, height-100], 
-                     "Art/ButtonStart_Base.png", 
+                     "Art/Button/Start_Base.png", 
                      "Art/Button/Start_Clicked.png")
                      
 while True:
@@ -45,14 +45,14 @@ while True:
                     run = True
          
          
-        bgImage = pygame.image.load("Art/Title.png").convert()
+        bgImage = pygame.image.load("Art/Background/Title.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
         
-    bgImage = pygame.image.load("BL1.png").convert()
+    bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
     while run:
         for event in pygame.event.get():
