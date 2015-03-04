@@ -3,7 +3,7 @@ import pygame
 
 class Bullet():
     def __init__(self, pos, speed, heading):
-        self.image = pygame.image.load("Art/Lazor.png")
+        self.image = pygame.image.load("Art/Laser/Laser.png")
         self.rect = self.image.get_rect()
         self.speedx = 0
         self.speedy = 0
