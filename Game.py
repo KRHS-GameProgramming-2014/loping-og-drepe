@@ -5,6 +5,7 @@ from Powerup import Powerup
 
 pygame.init()
 
+clock = pygame.time.Clock()
 
 width = 1000
 height = 715
@@ -138,4 +139,4 @@ while True:
             screen.blit(bullet.image, bullet.rect)
         
         pygame.display.flip()
-        
+        clock.tick(60)

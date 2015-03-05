@@ -107,6 +107,7 @@ class Player():
     
 
     def move(self):
+        #print self.speed
         self.rect = self.rect.move(self.speed)
         
     def collideWall(self, width, height):
