@@ -14,7 +14,7 @@ class Player():
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 1
+        self.maxSpeed = 5
         self.changed = False
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
@@ -107,6 +107,7 @@ class Player():
     
 
     def move(self):
+        #print self.speed
         self.rect = self.rect.move(self.speed)
         
     def collideWall(self, width, height):
