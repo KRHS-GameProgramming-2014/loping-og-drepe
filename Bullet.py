@@ -25,23 +25,17 @@ class Bullet():
     def place(self, pos):
         self.rect.center = pos
         
-    def update(self, width, height):
-        self.didBounceX = False
-        self.didBounceY = False
-        self.speed = [self.speedx, self.speedy]
-        self.move()
-        self.collideWall(width, height)
-        
     def move(self):
         self.rect = self.rect.move(self.speed)
     
-    def collidePlayer(self, other):
-        if self != other:
-            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-                    if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
-    
+	def collidePlayer(self, other):
+		if self != other:
+			if self.rect.right > other.rect.left or self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top or self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.living = False
+						return True
+		return False
 
     def collideWall(self, width, height):
         if self.rect.left < 0 or self.rect.right > width:
@@ -55,3 +49,11 @@ class Bullet():
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+    def update(self, width, height):
+        self.didBounceX = False
+        self.didBounceY = False
+        self.speed = [self.speedx, self.speedy]
+        self.move()
+        self.collideWall(width, height)
+        self.collidePlayer(self, other)

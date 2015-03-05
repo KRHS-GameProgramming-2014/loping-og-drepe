@@ -13,12 +13,11 @@ size = width, height
 bgColor = r,g,b = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
-
 bgImage = pygame.image.load("Art/Background/BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
-player1 = Player(1, "Art/Player/P1.png",[0,0], [400,200])
+player1 = Player(1, "Art/Player/P1.png",[5,5], [400,200])
 player2 = Player(1, "Art/Player/P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
@@ -124,6 +123,7 @@ while True:
             if not bullet.living:
                 p1Bullets.remove(bullet)
         print len(p1Bullets), len(p2Bullets)
+        
         bgColor = r,g,b
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
