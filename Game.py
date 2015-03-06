@@ -117,6 +117,14 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
+        for bullet in p1Bullets:
+            if bullet.collidePlayer:
+                bullet.living = False
+
+        for bullet in p2Bullets:
+            if bullet.collidePlayer:
+                bullet.living = False
+                
         for bullet in p2Bullets:
             if not bullet.living:
                 p2Bullets.remove(bullet)
