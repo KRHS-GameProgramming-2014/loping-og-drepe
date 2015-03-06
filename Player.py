@@ -7,14 +7,14 @@ class Player():
         if playernum == 1:
             self.images = []
         self.image = pygame.image.load(image)
-        self.image = pygame.transform.scale(self.image, [27,27])
+        self.image = pygame.transform.scale(self.image, [25,25])
         self.frame = 0
         self.rect = self.image.get_rect()
         self.place(pos)
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 10
+        self.maxSpeed = 4.5
         self.changed = False
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
