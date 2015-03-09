@@ -140,7 +140,7 @@ class Player():
     def shoot(self):
         if self.coolDown == 0:
             self.coolDown += 1
-            return [Bullet(self.rect.center, 2, self.facing)]
+            return [Bullet(self.rect.center, 8, self.facing)]
         else:
             return []                  
 
