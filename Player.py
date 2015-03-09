@@ -29,7 +29,11 @@ class Player():
         self.facing = "up"
         self.coolDown = 0
         self.coolDownMax = 5
+        self.amount = 3
+        self.health = self.amount
         self.living = True
+        self.hurt = False
+        
 
     def place(self, pos):
         self.rect.center = pos
@@ -103,7 +107,18 @@ class Player():
         self.collideWall(width, height)
         #self.animate()
         self.changed = False
-        self.health
+        self.hurt
+        
+    def hurt(self, amount=1):
+        self.changed = True
+        self.hurting = True
+        if not self.invincible:
+            self.health -= amount
+            self.invincible = True
+            self.hurtDelay = self.maxHurtDelay
+        
+        if self.health <=0:
+            self.living = False
     
 
     def move(self):
@@ -144,7 +159,4 @@ class Player():
         else:
             return []                  
 
-    def health(self):
-        health = 3
-        if self.health < 1:
-            self.living = False
+

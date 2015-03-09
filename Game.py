@@ -117,6 +117,14 @@ while True:
         player1.update(width, height)
         player2.update(width, height)
         
+        for player in player1
+            if player.health <= 0
+                player.remove
+        
+        for player in player2
+            if player.health <= 0
+                player.remove
+                
         for bullet in p1Bullets:
             if bullet.collidePlayer:
                 bullet.living = False
