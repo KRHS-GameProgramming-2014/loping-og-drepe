@@ -56,3 +56,4 @@ class Bullet():
         self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
+        self.collidePlayer(self, other)

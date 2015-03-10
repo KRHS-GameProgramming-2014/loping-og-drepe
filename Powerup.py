@@ -6,6 +6,7 @@ class Powerup():
         if self.kind == "SPU":
             self.image = pygame.image.load("Art/Powerups/SPDPower.png")
         self.rect = self.image.get_rect()
+        self.image = pygame.transform.scale(self.image, [30,30])
         self.place(pos)
         self.living = True
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
