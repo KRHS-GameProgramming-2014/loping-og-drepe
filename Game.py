@@ -18,7 +18,7 @@ bgImage = pygame.image.load("Art/Background/BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
-player1 = Player(1, "Art/Player/P1.png",[5,5], [400,200])
+player1 = Player(1, "Art/Player/P1.png",[0,0], [400,200])
 player2 = Player(1, "Art/Player/P2.png",[0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
 
@@ -116,23 +116,21 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
-        
-        #for player in player1
-         #   if player.health <= 0
-          #      player.remove
-        
-        #for player in player2
-         #   if player.health <= 0
-          #      player.remove
                 
         for bullet in p1Bullets:
-            if bullet.collidePlayer:
-                bullet.living = False
+            if bullet.collidePlayer(player2):
+                player1.hurt()
 
         for bullet in p2Bullets:
-            if bullet.collidePlayer:
-                bullet.living = False
+            if bullet.collidePlayer(player1):
+                player2.hurt()
                 
+        for powerup in powerups:
+            powerup.collidePlayer(player1)
+            powerup.collidePlayer(player2)
+            player1.collidePowerup(powerup)
+            player2.collidePowerup(powerup)
+    
         for bullet in p2Bullets:
             if not bullet.living:
                 p2Bullets.remove(bullet)

@@ -1,5 +1,5 @@
 
-import pygame
+import pygame, math
 
 class Bullet():
     def __init__(self, pos, speed, heading):
@@ -10,7 +10,6 @@ class Bullet():
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
-        self.collidePlayer = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
         if heading == "up":
@@ -29,12 +28,12 @@ class Bullet():
     def move(self):
         self.rect = self.rect.move(self.speed)
     
-	def collidePlayer(self, other):
-		if self != other:
-			if self.rect.right > other.rect.left or self.rect.left < other.rect.right:
-				if self.rect.bottom > other.rect.top or self.rect.top < other.rect.bottom:
-					if (self.radius + other.radius) > self.distance(other.rect.center):
-						self.living = False
+    def collidePlayer(self, other):
+        if self != other:
+            if self.rect.right > other.rect.left or self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top or self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        self.living = False
                         return True
                         print "Hurting Player"
         return False
@@ -58,4 +57,3 @@ class Bullet():
         self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
-        self.collidePlayer(self, other)
