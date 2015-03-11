@@ -1,4 +1,4 @@
-import pygame
+import pygame, math
 
 class Powerup():
     def __init__(self, kind, pos = [0,0]):
@@ -32,11 +32,12 @@ class Powerup():
         else:
             self.living = False
     
-    def distance (self, other):
-        x1 = self.rect.center[0]
-        y1 = self.rect.center[1]
-        x2 = pt[0]
-        y2 = pt[1]
+    def distance(self, pt):
+		x1 = self.rect.center[0]
+		y1 = self.rect.center[1]
+		x2 = pt[0]
+		y2 = pt[1]
+		return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
 
 

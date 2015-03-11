@@ -10,18 +10,18 @@ class Player():
         self.image = pygame.transform.scale(self.image, [25,25])
         self.frame = 0
         self.rect = self.image.get_rect()
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.place(pos)
         self.speedx = speed[0]
         self.speedy = speed[1]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 4.5
         self.changed = False
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
         self.maxWait = 60*.25
-        #self.maxSpeed = 20
-        #self.normalMaxSpeed = 20
-        #self.fasterMaxSpeed = 30
+        self.maxSpeed = 5
+        self.normalMaxSpeed = 5
+        self.fasterMaxSpeed = 10
         self.maxSPUtime = 10*60
         self.spuTime = 0
         self.didBounceX = False
@@ -32,7 +32,6 @@ class Player():
         self.amount = 3
         self.health = self.amount
         self.living = True
-        self.hurt = False
         
 
     def place(self, pos):
@@ -92,11 +91,13 @@ class Player():
     def update(self, width, height):
         self.didBounceX = False
         self.didBounceY = False
-        if self.spuTime != 0:
-            if self.spuTime < self.maxSPUtime:
-                self.spuTimer += 1
-                self.spuTime = 0
-                self.maxSpeed = self.normalMaxSpeed
+        if 0 < self.spuTime < self.maxSPUtime:
+            self.spuTime += 1
+            self.maxSpeed = self.fasterMaxSpeed
+        else:
+            self.spuTime = 0
+            self.maxSpeed = self.normalMaxSpeed
+            
         if self.coolDown > 0:
             if self.coolDown < self.coolDownMax:
                 self.coolDown += 1
@@ -112,10 +113,6 @@ class Player():
     def hurt(self, amount=1):
         self.changed = True
         self.hurting = True
-        if not self.invincible:
-            self.health -= amount
-            self.invincible = True
-            self.hurtDelay = self.maxHurtDelay
         
         if self.health <=0:
             self.living = False
@@ -151,6 +148,17 @@ class Player():
 						self.living = False
 						return True
 		return False
+        
+    def collidePowerup(self, other):
+        if self != other:
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        if other.kind == "SPU":
+                            self.spuTime += 1
+                            self.maxSpeed = self.fasterMaxSpeed
+                        return True
+        return False
       
     def shoot(self):
         if self.coolDown == 0:
