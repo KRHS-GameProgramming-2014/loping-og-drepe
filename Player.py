@@ -32,6 +32,7 @@ class Player():
         self.amount = 3
         self.health = self.amount
         self.living = True
+        self.hurt = False
         
 
     def place(self, pos):
@@ -92,11 +93,11 @@ class Player():
         self.didBounceX = False
         self.didBounceY = False
         if 0 < self.spuTime < self.maxSPUtime:
-            self.spuTime += 1
-            self.maxSpeed = self.fasterMaxSpeed
-        else:
-            self.spuTime = 0
-            self.maxSpeed = self.normalMaxSpeed
+        if self.spuTime != 0:
+            if self.spuTime < self.maxSPUtime:
+                self.spuTimer += 1
+                self.spuTime = 0
+                self.maxSpeed = self.normalMaxSpeed
             
         if self.coolDown > 0:
             if self.coolDown < self.coolDownMax:
@@ -141,24 +142,11 @@ class Player():
         
 
     def collidePlayer(self, other):
-		if self != other:
-			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-					if (self.radius + other.radius) > self.distance(other.rect.center):
-						self.living = False
-						return True
-		return False
-        
-    def collidePowerup(self, other):
         if self != other:
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        if other.kind == "SPU":
-                            self.spuTime += 1
-                            self.maxSpeed = self.fasterMaxSpeed
-                        return True
-        return False
+                        self.hurt
       
     def shoot(self):
         if self.coolDown == 0:
