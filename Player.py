@@ -1,6 +1,6 @@
 import pygame, math
 from Bullet import Bullet
-#noah
+
 class Player():
     def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
         self.playernumber = playernum
