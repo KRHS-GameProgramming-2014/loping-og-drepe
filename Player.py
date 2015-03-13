@@ -1,5 +1,6 @@
 import pygame, math
 from Bullet import Bullet
+from health import*
 #fd
 class Player():
     def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
@@ -59,7 +60,15 @@ class Player():
                 self.images = self.leftImages
             
             self.image = self.images[self.frame]
-        
+
+    def modifyHealth (self, amount):
+        self.health += amount
+        if self.health <= 0:
+            self.health = 0
+            self.living = False
+        elif self.health >= self.maxHealth:
+            self.health = self.maxHealth
+
     def go(self, direction):
       #  print "[DEBUG] direction in go() is : " + direction
         if direction == "up":
@@ -108,16 +117,7 @@ class Player():
         self.collideWall(width, height)
         #self.animate()
         self.changed = False
-        self.hurt
-        
-    def hurt(self, amount=1):
-        self.changed = True
-        self.hurting = True
-        
-        if self.health <=0:
-            self.living = False
     
-
     def move(self):
         #print self.speed
         self.rect = self.rect.move(self.speed)

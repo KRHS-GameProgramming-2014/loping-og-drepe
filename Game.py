@@ -2,7 +2,7 @@ import pygame, sys
 from Player import Player
 from Button import Button
 from Powerup import Powerup
-
+from health import HealthBar
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -24,6 +24,9 @@ powerups = [Powerup("SPU",[500,600])]
 
 p1Bullets = []
 p2Bullets = []
+
+healthbar = HealthBar([width - 75, 125])
+
 
 run = False
 
@@ -51,6 +54,7 @@ while True:
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
+        screen.blit(healthbar.surface, healthbar.rect)
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
@@ -116,7 +120,12 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
-                
+        
+        if player1.health <= 0:
+            player1.living = False
+        if player2.health <= 0:
+            player2.living = False
+
         for bullet in p1Bullets:
             if bullet.collidePlayer(player2):
                 player1.hurt()
