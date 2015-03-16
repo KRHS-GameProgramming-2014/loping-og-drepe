@@ -27,6 +27,7 @@ p2Bullets = []
 
 healthbar = HealthBar([width - 75, 125])
 
+healthbar1 = HealthBar([width - 445, 125])
 
 run = False
 
@@ -157,6 +158,7 @@ while True:
         screen.blit(player1.image, player1.rect)
         screen.blit(player2.image, player2.rect)
         screen.blit(healthbar.surface, healthbar.rect)
+        screen.blit(healthbar1.surface, healthbar1.rect)
         
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)

@@ -31,7 +31,7 @@ class Player():
         self.coolDown = 0
         self.coolDownMax = 5
         self.amount = 3
-        self.health = self.amount
+        self.health = 250
         self.living = True
         
 
