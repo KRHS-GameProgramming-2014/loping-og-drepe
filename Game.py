@@ -156,6 +156,7 @@ while True:
         screen.blit(bgImage, bgRect)
         screen.blit(player1.image, player1.rect)
         screen.blit(player2.image, player2.rect)
+        screen.blit(healthbar.surface, healthbar.rect)
         
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)
