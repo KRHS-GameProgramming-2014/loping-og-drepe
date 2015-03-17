@@ -3,7 +3,13 @@ from Player import Player
 from Button import Button
 from Powerup import Powerup
 from health import HealthBar
+
 pygame.init()
+
+# constant variables for static values
+BULLET_DAMAGE = 5
+POWERUP_BOOST = .25
+
 
 clock = pygame.time.Clock()
 
@@ -25,9 +31,9 @@ powerups = [Powerup("SPU",[500,600])]
 p1Bullets = []
 p2Bullets = []
 
-healthbar = HealthBar([width - 75, 125])
-
 healthbar1 = HealthBar([width - 445, 125])
+
+healthbar2 = HealthBar([width - 75, 125])
 
 run = False
 
@@ -55,10 +61,11 @@ while True:
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         pygame.display.flip()
-        screen.blit(healthbar.surface, healthbar.rect)
+        #screen.blit(healthbar1.surface, healthbar1.rect)
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
+    
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -90,7 +97,7 @@ while True:
                 if event.key == pygame.K_LEFT:
                     #print "[DEBUG] left arrow pressed"
                     player1.go("left")         
-                if event.key == pygame.K_KP0:
+                if event.key == pygame.K_KP0: # <---- DOESN'T WORK ON A KEYBOARD WITH NO KEYPAD (LIKE MOST LAPTOPS!!!)
                     #print "[DEBUG] a button pressed"
                     p1Bullets += player1.shoot()
             
@@ -121,19 +128,14 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
-        
-        if player1.health <= 0:
-            player1.living = False
-        if player2.health <= 0:
-            player2.living = False
-
+                    
         for bullet in p1Bullets:
             if bullet.collidePlayer(player2):
-                player1.hurt()
+                player2.modifyHealth(BULLET_DAMAGE)
 
         for bullet in p2Bullets:
             if bullet.collidePlayer(player1):
-                player2.hurt()
+                player1.modifyHealth(BULLET_DAMAGE)
                 
         for powerup in powerups:
             powerup.collidePlayer(player1)
@@ -155,10 +157,13 @@ while True:
         bgColor = r,g,b
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
-        screen.blit(player1.image, player1.rect)
-        screen.blit(player2.image, player2.rect)
-        screen.blit(healthbar.surface, healthbar.rect)
-        screen.blit(healthbar1.surface, healthbar1.rect)
+
+        if player1.living == True:
+            screen.blit(player1.image, player1.rect)
+            screen.blit(healthbar1.surface, healthbar1.rect)
+        if player2.living == True:
+            screen.blit(player2.image, player2.rect)
+            screen.blit(healthbar2.surface, healthbar2.rect)
         
         for powerup in powerups:
             screen.blit(powerup.image, powerup.rect)
@@ -169,3 +174,4 @@ while True:
         
         pygame.display.flip()
         clock.tick(60)
+

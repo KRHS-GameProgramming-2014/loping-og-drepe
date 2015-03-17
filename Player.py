@@ -1,7 +1,11 @@
 import pygame, math
 from Bullet import Bullet
 from health import*
-#fd
+
+# constant variables for static values
+MAX_HEALTH = 100
+
+
 class Player():
     def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
         self.playernumber = playernum
@@ -30,8 +34,8 @@ class Player():
         self.facing = "up"
         self.coolDown = 0
         self.coolDownMax = 5
-        self.amount = 3
-        self.health = 250
+        #self.amount = 3   <--- derp, not needed; amount is passed in to modifyHealth()
+        self.health = 100
         self.living = True
         
 
@@ -62,12 +66,13 @@ class Player():
             self.image = self.images[self.frame]
 
     def modifyHealth (self, amount):
-        self.health += amount
+        self.health -= amount
+        print "[DEBUG] health : " + str(self.health)
         if self.health <= 0:
             self.health = 0
             self.living = False
-        elif self.health >= self.maxHealth:
-            self.health = self.maxHealth
+        elif self.health >= MAX_HEALTH:
+            self.health = MAX_HEALTH
 
     def go(self, direction):
       #  print "[DEBUG] direction in go() is : " + direction
@@ -161,6 +166,7 @@ class Player():
         return False
       
     def shoot(self):
+        #print "[DEBUG] shoot!"
         if self.coolDown == 0:
             self.coolDown += 1
             return [Bullet(self.rect.center, 8, self.facing)]
