@@ -24,9 +24,9 @@ bgImage = pygame.image.load("Art/Background/BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 
-player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
-player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
-powerups = [Powerup("SPU",[500,600])]
+player1 = Player(1, "Art/Player/P1.png",[0,0], [400,200])
+player2 = Player(1, "Art/Player/P2.png",[0,0], [750,600])
+powerups = [Powerup("SPU",[500,600])
 
 p1Bullets = []
 p2Bullets = []
