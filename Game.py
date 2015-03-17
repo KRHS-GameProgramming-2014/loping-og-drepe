@@ -7,7 +7,7 @@ from health import HealthBar
 pygame.init()
 
 # constant variables for static values
-BULLET_DAMAGE = 5
+BULLET_DAMAGE = 34
 POWERUP_BOOST = .25
 
 
