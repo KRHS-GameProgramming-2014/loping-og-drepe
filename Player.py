@@ -7,7 +7,7 @@ MAX_HEALTH = 100
 
 
 class Player():
-    def __init__(self, playernum, image, speed = [0,0], pos = [0,0]):
+    def __init__(self, playernum, image, lives,  speed = [0,0], pos = [0,0]):
         self.playernumber = playernum
         if playernum == 1:
             self.images = []
@@ -37,6 +37,7 @@ class Player():
         #self.amount = 3   <--- derp, not needed; amount is passed in to modifyHealth()
         self.health = 100
         self.living = True
+        self.lives = lives
         
 
     def place(self, pos):
