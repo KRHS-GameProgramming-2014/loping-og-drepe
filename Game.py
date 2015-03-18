@@ -67,7 +67,17 @@ while True:
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
-    
+    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
+    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
+    powerups = [Powerup("SPU",[500,600])]
+
+    p1Bullets = []
+    p2Bullets = []
+
+    healthbar1 = HealthBar([width - 955, 700])
+
+    healthbar2 = HealthBar([width - 45, 700])
+
     while run and player1.lives > 0 and player2.lives > 0:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -183,12 +193,47 @@ while True:
         player1win = pygame.image.load("Art/Background/WinP1.png")
         player2win = pygame.image.load("Art/Background/WinP2.png")       
         
-        if player1.living == False:
-            screen.blit(player2win)
-            
-        if player2.living == False:
-            screen.blit(player1win)
-        
         pygame.display.flip()
         clock.tick(60)
 
+    while run and player1.lives == 0:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton.release(event.pos):
+                    run = False
+         
+         
+        bgImage = pygame.image.load("Art/Background/WinP2.png").convert()
+        bgImage = pygame.transform.scale(bgImage, [1000,715])
+        bgRect = bgImage.get_rect()
+        screen.blit(bgImage, bgRect)
+        screen.blit(startButton.image, startButton.rect)
+        pygame.display.flip()
+        #screen.blit(healthbar1.surface, healthbar1.rect)
+        
+    while run and player2.lives == 0:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton.release(event.pos):
+                    run = False
+         
+         
+        bgImage = pygame.image.load("Art/Background/WinP1.png").convert()
+        bgImage = pygame.transform.scale(bgImage, [1000,715])
+        bgRect = bgImage.get_rect()
+        screen.blit(bgImage, bgRect)
+        screen.blit(startButton.image, startButton.rect)
+        pygame.display.flip()
+        #screen.blit(healthbar1.surface, healthbar1.rect)
