@@ -23,6 +23,8 @@ screen = pygame.display.set_mode(size)
 bgImage = pygame.image.load("Art/Background/BL1.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
+player1win = pygame.image.load("Art/Background/WinP1.png")
+player2win = pygame.image.load("Art/Background/WinP2.png")
 
 player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
 player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
@@ -176,6 +178,12 @@ while True:
             screen.blit(bullet.image, bullet.rect)
         for bullet in p2Bullets:
             screen.blit(bullet.image, bullet.rect)
+        
+        if player1.living == False:
+            screen.blit(player2win)
+            
+        if player2.living == False:
+            screen.blit(player1win)
         
         pygame.display.flip()
         clock.tick(60)
