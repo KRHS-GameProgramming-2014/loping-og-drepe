@@ -163,7 +163,8 @@ while True:
         
         bgColor = r,g,b
         screen.fill(bgColor)
-        screen.blit(bgImage, bgRect)
+        if player1.living == True and player2.living == True:
+            screen.blit(bgImage, bgRect)
 
         if player1.living == True:
             screen.blit(player1.image, player1.rect)
@@ -178,6 +179,9 @@ while True:
             screen.blit(bullet.image, bullet.rect)
         for bullet in p2Bullets:
             screen.blit(bullet.image, bullet.rect)
+ 
+        player1win = pygame.image.load("Art/Background/WinP1.png")
+        player2win = pygame.image.load("Art/Background/WinP2.png")       
         
         if player1.living == False:
             screen.blit(player2win)
