@@ -35,8 +35,7 @@ p1Bullets = []
 p2Bullets = []
 
 healthbar1 = HealthBar([width - 955, 700])
-
-healthbar2 = HealthBar([width - 45, 700])
+healthbar2 = HealthBar([width - 4.05, 700])
 
 run = False
 
