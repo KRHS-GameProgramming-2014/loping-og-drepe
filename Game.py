@@ -4,6 +4,8 @@ from Button import Button
 from Powerup import Powerup
 from health import HealthBar
 
+#Test
+
 pygame.init()
 
 # constant variables for static values
