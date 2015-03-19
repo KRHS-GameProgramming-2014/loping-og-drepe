@@ -7,7 +7,7 @@ from health import HealthBar
 pygame.init()
 
 # constant variables for static values
-BULLET_DAMAGE = 34
+BULLET_DAMAGE = 13
 POWERUP_BOOST = .25
 
 
@@ -29,6 +29,7 @@ player2win = pygame.image.load("Art/Background/WinP2.png")
 player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
 player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
 powerups = [Powerup("SPU",[500,600])]
+
 
 p1Bullets = []
 p2Bullets = []
@@ -70,6 +71,7 @@ while True:
     player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
     player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
     powerups = [Powerup("SPU",[500,600])]
+    
 
     p1Bullets = []
     p2Bullets = []
@@ -140,6 +142,9 @@ while True:
             
         player1.update(width, height)
         player2.update(width, height)
+        healthbar1.update(player1.health, player1.maxHealth)
+        healthbar2.update(player2.health, player2.maxHealth)
+        
                     
         for bullet in p1Bullets:
             if bullet.collidePlayer(player2):

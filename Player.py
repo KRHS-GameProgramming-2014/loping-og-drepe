@@ -36,6 +36,7 @@ class Player():
         self.coolDownMax = 5
         #self.amount = 3   <--- derp, not needed; amount is passed in to modifyHealth()
         self.health = 100
+        self.maxHealth = 100
         self.living = True
         self.lives = lives
         
