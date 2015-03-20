@@ -69,8 +69,8 @@ while True:
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
-    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [357,357])
-    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,357])
+    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [50,357])
+    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [950,357])
     
     
 
