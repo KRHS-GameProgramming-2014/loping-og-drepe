@@ -69,8 +69,8 @@ while True:
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
-    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [50,357])
-    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [950,357])
+    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [950,357])
+    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [50,357])
     
     
 
@@ -97,7 +97,7 @@ while True:
                 if event.key == pygame.K_a:
                     #print "[DEBUG] a button pressed"
                     player2.go("left")
-                if event.key == pygame.K_z:
+                if event.key == pygame.K_SPACE:
                     #print "[DEBUG] a button pressed"
                     p2Bullets += player2.shoot()
                 if event.key == pygame.K_UP:
@@ -177,9 +177,9 @@ while True:
                 powerups.remove(powerup)
         
         if not player1.living:
-            player1 = Player(1, "Art/Player/P1.png",player1.lives - 1, [0,0], [50,357])
+            player1 = Player(1, "Art/Player/P1.png",player1.lives - 1, [0,0], [950,357])
         if not player2.living:
-            player2 = Player(1, "Art/Player/P2.png",player2.lives - 1, [0,0], [950,357])
+            player2 = Player(1, "Art/Player/P2.png",player2.lives - 1, [0,0], [50,357])
         print len(p1Bullets), len(p2Bullets)
         
         bgColor = r,g,b
