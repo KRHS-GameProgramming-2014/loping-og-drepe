@@ -28,8 +28,8 @@ bgRect = bgImage.get_rect()
 player1win = pygame.image.load("Art/Background/WinP1.png")
 player2win = pygame.image.load("Art/Background/WinP2.png")
 
-player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
-player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
+player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [50,357])
+player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [950,357])
 powerups = []
 
 
@@ -69,8 +69,8 @@ while True:
         
     bgImage = pygame.image.load("Art/Background/BL1.png").convert()
     bgRect = bgImage.get_rect()
-    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
-    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
+    player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [357,357])
+    player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,357])
     
     
 
@@ -177,9 +177,9 @@ while True:
                 powerups.remove(powerup)
         
         if not player1.living:
-            player1 = Player(1, "Art/Player/P1.png",player1.lives - 1, [0,0], [400,200])
+            player1 = Player(1, "Art/Player/P1.png",player1.lives - 1, [0,0], [50,357])
         if not player2.living:
-            player2 = Player(1, "Art/Player/P2.png",player2.lives - 1, [0,0], [300,250])
+            player2 = Player(1, "Art/Player/P2.png",player2.lives - 1, [0,0], [950,357])
         print len(p1Bullets), len(p2Bullets)
         
         bgColor = r,g,b

@@ -26,7 +26,7 @@ class Player():
         self.maxWait = 60*.25
         self.maxSpeed = 5
         self.normalMaxSpeed = 5
-        self.fasterMaxSpeed = 10
+        self.fasterMaxSpeed = 7
         self.maxSPUtime = 10*60
         self.spuTime = 0
         self.didBounceX = False
