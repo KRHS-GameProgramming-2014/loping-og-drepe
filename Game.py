@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, random
 from Player import Player
 from Button import Button
 from Powerup import Powerup
@@ -30,7 +30,7 @@ player2win = pygame.image.load("Art/Background/WinP2.png")
 
 player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
 player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
-powerups = [Powerup("SPU",[500,600])]
+powerups = []
 
 
 p1Bullets = []
@@ -71,7 +71,7 @@ while True:
     bgRect = bgImage.get_rect()
     player1 = Player(1, "Art/Player/P1.png", 3, [0,0], [400,200])
     player2 = Player(1, "Art/Player/P2.png", 3, [0,0], [750,600])
-    powerups = [Powerup("SPU",[500,600])]
+    
     
 
     p1Bullets = []
@@ -133,6 +133,11 @@ while True:
                     player1.go("stop down")
                 if event.key == pygame.K_LEFT:
                     player1.go("stop left")
+        
+        if len(powerups) < 2:
+            if random.randint(0, 100) == 0:
+                powerups += [Powerup("SPU",
+                                [random.randint(50, width-50),random.randint(50,height-50)])]
         
         for powerup in powerups:
             powerup.update()

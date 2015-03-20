@@ -10,7 +10,7 @@ class Powerup():
         self.place(pos)
         self.living = True
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
-        self.timeMax = 9999999999999999999999999999999999999999999999999999999999999999999999999999999
+        self.timeMax = 10*30
         self.time = 0
 
 
