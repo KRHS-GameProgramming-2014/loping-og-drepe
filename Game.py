@@ -77,9 +77,9 @@ while True:
     p1Bullets = []
     p2Bullets = []
 
-    healthbar1 = HealthBar([width - 955, 700])
+    healthbar1 = HealthBar([width - 45, 700])
 
-    healthbar2 = HealthBar([width - 45, 700])
+    healthbar2 = HealthBar([width - 955, 700])
 
     while run and player1.lives > 0 and player2.lives > 0:
         for event in pygame.event.get():
@@ -220,7 +220,7 @@ while True:
                     run = False
          
          
-        bgImage = pygame.image.load("Art/Background/WinP2.png").convert()
+        bgImage = pygame.image.load("Art/Background/WinP1.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
         screen.blit(bgImage, bgRect)
@@ -241,7 +241,7 @@ while True:
                     run = False
          
          
-        bgImage = pygame.image.load("Art/Background/WinP1.png").convert()
+        bgImage = pygame.image.load("Art/Background/WinP2.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
         screen.blit(bgImage, bgRect)
