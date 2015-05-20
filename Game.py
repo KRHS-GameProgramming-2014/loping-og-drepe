@@ -22,7 +22,7 @@ size = width, height
 bgColor = r,g,b = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
-bgImage = pygame.image.load("Art/Background/BL1.png").convert()
+bgImage = pygame.image.load("TitleAS.png").convert()
 bgImage = pygame.transform.scale(bgImage, [1000,715])
 bgRect = bgImage.get_rect()
 player1win = pygame.image.load("Art/Background/WinP1.png")
@@ -59,7 +59,7 @@ while True:
                     run = True
          
          
-        bgImage = pygame.image.load("Art/Background/Title.png").convert()
+        bgImage = pygame.image.load("TitleAS.png").convert()
         bgImage = pygame.transform.scale(bgImage, [1000,715])
         bgRect = bgImage.get_rect()
         screen.blit(bgImage, bgRect)
